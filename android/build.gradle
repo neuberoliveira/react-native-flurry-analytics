@@ -1,22 +1,23 @@
 buildscript {
   repositories {
     jcenter()
+    google()
   }
-
   dependencies {
-    classpath 'com.android.tools.build:gradle:2.2.0'
+    classpath 'com.android.tools.build:gradle:3.3.1'
+    classpath 'com.google.gms:google-services:3.2.1'
   }
 }
 
 apply plugin: 'com.android.library'
 
 android {
-  compileSdkVersion 23
-  buildToolsVersion "23.0.3"
+  compileSdkVersion 28
+  buildToolsVersion "28.0.3"
 
   defaultConfig {
     minSdkVersion 16
-    targetSdkVersion 23
+    targetSdkVersion 28
     versionCode 1
     versionName "1.0"
   }
@@ -26,21 +27,22 @@ android {
 }
 
 repositories {
-  mavenLocal()
+  mavenCentral()
+  google()
+  jcenter()
   maven {
     // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
     url "$projectDir/../../../node_modules/react-native/android"
   }
-  mavenCentral()
-  jcenter()
+
 }
 
 dependencies {
-	compile 'com.facebook.react:react-native:+'
+	implementation 'com.facebook.react:react-native:+'
 	// Recommended to add Google Play Services
-	compile 'com.google.android.gms:play-services-base:15.0.1'
+    implementation 'com.google.android.gms:play-services-base:16.1.0'
 	//compile 'com.google.android.gms:play-services-ads:15.0.1' 
 	
 	// Required for Flurry Analytics integration
-	compile 'com.flurry.android:analytics:11.4.0@aar'
+    implementation 'com.flurry.android:analytics:11.4.0@aar'
 }
